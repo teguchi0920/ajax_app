@@ -3,7 +3,7 @@ const buildHTML = (XHR) => {
   const html = `
     <div class="post">
       <div class="post-date">
-        投稿日時:${item.create_at}
+        投稿日時：${item.created_at}
       </div>
       <div class="post-content">
         ${item.content}
@@ -23,12 +23,12 @@ function post (){
     XHR.responseType = "json";
     XHR.send(formData);
     XHR.onload = () => {
-      if (XHR.status != 200){
-        alert(`Error ${XHR.status}: ${XHR.statusText}`)
+      if (XHR.status != 200) {
+        alert(`Error ${XHR.status}: ${XHR.statusText}`);
         return null;
       };
       const list = document.getElementById("list");
-      const formText = document.getElementById("content")
+      const formText = document.getElementById("content");
       list.insertAdjacentHTML("afterend", buildHTML(XHR));
       formText.value = "";
     };
